@@ -108,8 +108,6 @@ arrange(robbery.district,desc(Proportion))
 
 
 ## 5.) Visualize Changes of All types Crime over time
-# Tracking crimes by day -> use by.day tibble made in q2
-
 crimes %>%
   group_by(date) %>%
   summarise(count=n())%>%
@@ -121,7 +119,7 @@ crimes %>%
 
 
 
-## 6.) 
+## 6.) Visualize Changes in Crime by district by time
 
 crimes %>%
   mutate(DistrictNumber = as.factor(District))%>%
