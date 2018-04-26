@@ -52,6 +52,8 @@ arrange(by.crime,desc(count))
 # Larceny is the most common crime
 
 
+
+
 ## 3.) 
 #Compute Number of crimes per day by neighborhood. 
 by.neighborhood.date = crimes %>%
@@ -66,6 +68,9 @@ by.neighborhood = crimes %>%
 by.neighborhood
 arrange(by.neighborhood,desc(count))
 # Neighborhood 35 has the most crime
+
+
+
 
 ## 4.) Compute proprtion of robbery by district
 ## NOTE: I am assuming robbery and burglary are separate categories of crimes, and am thus leaving them as separate crimes. 
@@ -99,10 +104,11 @@ arrange(robbery.district,desc(Proportion))
 
 ## District 5 has the highest proportions of robberies
 
+
+
+
 ## 5.) Visualize Changes of All types Crime over time
 # Tracking crimes by day -> use by.day tibble made in q2
-ggplot(data = by.day) + 
-  geom_line(mapping = aes(x= date, y = count))
 
 crimes %>%
   group_by(date) %>%
@@ -110,4 +116,9 @@ crimes %>%
   ggplot(mapping = aes(date,count))+
   geom_line(mapping = aes(date, count))+
   labs(title= "Crime per day")
+
+
+
+
+## 6.) 
 
