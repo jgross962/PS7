@@ -99,4 +99,15 @@ arrange(robbery.district,desc(Proportion))
 
 ## District 5 has the highest proportions of robberies
 
-## 5.) 
+## 5.) Visualize Changes of All types Crime over time
+# Tracking crimes by day -> use by.day tibble made in q2
+ggplot(data = by.day) + 
+  geom_line(mapping = aes(x= date, y = count))
+
+crimes %>%
+  group_by(date) %>%
+  summarise(count=n())%>%
+  ggplot(mapping = aes(date,count))+
+  geom_line(mapping = aes(date, count))+
+  labs(title= "Crime per day")
+
