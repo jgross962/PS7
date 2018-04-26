@@ -13,7 +13,7 @@ library(tidyr)
 setwd("C:/Users/jgros/documents/GitHub/PS7")
 crimes = tbl_df(read.csv("March2018.csv"))
 # Check data
-fix(crimes)
+#fix(crimes)
 
 
 ## Pre-2.) Clean Data
@@ -35,11 +35,11 @@ crimes = separate(crimes,Description,into = c("crime","crimeDetail"),sep ="-")
 crimes = separate(crimes,crime,into = c("crime"),sep =" ")
 crimes = separate(crimes,crime,into = c("crime"),sep =",")
 crimes = separate(crimes,crime,into = c("crime"),sep ="/")
-## 2.) 
 
+## 2.) 
 #Compute Number of crimes per day. 
 by.day = crimes %>%
-  group_by(crime,date) %>%
+  group_by(date,crime) %>%
   summarise(count=n()
   )
 by.day
@@ -50,3 +50,25 @@ by.crime = crimes %>%
   summarise(count=n()
   )
 by.crime
+arrange(by.crime,desc(count))
+# Larceny is the most common crime
+
+
+## 3.) 
+#Compute Number of crimes per day by neighborhood. 
+by.neighborhood.date = crimes %>%
+  group_by(Neighborhood,date,crime) %>%
+  summarise(count=n()
+  )
+by.neighborhood.date
+
+# Which neighborhood has the most crime
+by.neighborhood = crimes %>%
+  group_by(Neighborhood) %>%
+  summarise(count=n()
+  )
+by.neighborhood
+arrange(by.neighborhood,desc(count))
+# Neighborhood 35 has the most crime
+
+$
