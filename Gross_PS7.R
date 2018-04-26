@@ -115,10 +115,22 @@ crimes %>%
   summarise(count=n())%>%
   ggplot(mapping = aes(date,count))+
   geom_line(mapping = aes(date, count))+
-  labs(title= "Crime per day")
+  labs(title= "Crime per day")+
+  ylab ( "Number of Crimes")
 
 
 
 
 ## 6.) 
+
+crimes %>%
+  mutate(DistrictNumber = as.factor(District))%>%
+  group_by(date,DistrictNumber) %>%
+  ggplot(mapping = aes(date))+
+  geom_freqpoly(mapping = aes(color = DistrictNumber),binwidth = 1)+
+  labs(title= "Crime by District")+
+  xlim(as.Date("2018-03-01"),as.Date("2018-03-31"))+
+  ylab ( "Number of Crimes")
+
+
 
